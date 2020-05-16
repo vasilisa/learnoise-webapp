@@ -4,8 +4,8 @@ import {withRouter} from 'react-router-dom';
 import { API_URL } from '../../config';
 import { handleResponse } from '../helpers';
 
-import { CSSTransitionGroup } from 'react-transition-group';
-// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
+// import { CSSTransitionGroup } from 'react-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
 
 import Score from '../Score/Score';

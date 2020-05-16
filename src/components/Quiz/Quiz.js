@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransitionGroup } from 'react-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
+
+// import { CSSTransitionGroup } from 'react-transition-group';
 import Question from '../QuizQuestion/Question';
 import AnswerOption from '../QuizQuestion/AnswerOption';
 import ProgressBar from '../QuizQuestion/ProgressBar';

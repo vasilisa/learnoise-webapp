@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
 import Checkbox from '../Checkbox/Checkbox';
-// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
-import { CSSTransitionGroup } from 'react-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
 
 const consents = [
