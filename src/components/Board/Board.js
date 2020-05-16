@@ -7,8 +7,8 @@ import { API_URL } from '../../config';
 // import { handleResponse } from '../helpers';
 import {withRouter} from 'react-router-dom';
 
-// import { CSSTransitionGroup } from 'react-transition-group';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
+import { CSSTransitionGroup } from 'react-transition-group';
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
 class Board extends React.Component {
   constructor(props){
