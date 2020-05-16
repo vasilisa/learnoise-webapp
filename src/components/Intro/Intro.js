@@ -70,7 +70,7 @@ class Intro extends React.Component {
     this.fetchParticipantInfo.bind(this); 
 
     // for DEBUG ONLY REMOVE AFTER: 
-    this.directToSurvey.bind(this); 
+    // this.directToSurvey.bind(this); 
 
   }
 
@@ -111,13 +111,13 @@ class Intro extends React.Component {
         }
 
 /* This is for SURVEY DEBUG ONLY TO SKIP THE TASK */ 
-directToSurvey () {
+// directToSurvey () {
     
-    this.props.history.push({
-      pathname: `/Survey`,
-      state: {participant_info: this.state, newblock_frame:true} // the 'newblock_frame' variable is redundant but this simplifies the code
-    })
-  }
+//     this.props.history.push({
+//       pathname: `/Survey`,
+//       state: {participant_info: this.state, newblock_frame:true} // the 'newblock_frame' variable is redundant but this simplifies the code
+//     })
+//   }
 
 
 render() {
@@ -187,11 +187,6 @@ render() {
         <div className="buttonContainer">
           <Button type="button" onClick={()=>this.redirectToTarget()}>NEXT</Button>
         </div>
-
-        <div className="buttonContainer">
-          <Button type="button" onClick={()=>this.directToSurvey()}>SURVEY-DEBUG</Button>
-        </div>
-        
         </div>
         </div>  
     );
@@ -199,3 +194,9 @@ render() {
 }
  
 export default withRouter(Intro);
+
+/*
+<div className="buttonContainer">
+          <Button type="button" onClick={()=>this.directToSurvey()}>SURVEY-DEBUG</Button>
+        </div>
+*/
