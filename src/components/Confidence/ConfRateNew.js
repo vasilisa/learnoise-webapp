@@ -17,6 +17,7 @@ var myArray   = [50, 65, 70, 75, 82, 90];
 
 const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
 // const defaultValues = [Math.round(Math.random()*50+50)] // to be changed 
+console.log(defaultValues)
 
 
 class ConfRate extends React.Component {
