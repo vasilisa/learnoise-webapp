@@ -39,6 +39,11 @@ const consents = [
     type: 'checkBox8',
     content: 'I agree that the research project named above has been explained to me to my satisfaction and I agree to take part in this study.',
   },
+
+    {
+    type: 'checkBox9',
+    content: 'I confirm to use a DESKTOP or a TABLET but NOT A MOBILE PHONE thourought the entire sutdy.',
+  },
 ];
 
 
