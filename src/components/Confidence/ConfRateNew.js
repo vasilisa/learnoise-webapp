@@ -15,15 +15,20 @@ const domain  = [50, 100]
 
 var myArray   = [50, 65, 70, 75, 82, 90]; 
 
-const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
+// const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
 // const defaultValues = [Math.round(Math.random()*50+50)] // to be changed 
-console.log(defaultValues)
+// console.log(defaultValues)
 
 
 class ConfRate extends React.Component {
 
   constructor(props){
     super(props);
+
+
+    const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
+    // const defaultValues = [Math.round(Math.random()*50+50)] // to be changed 
+    console.log(defaultValues)
 
 
     this.state = {
@@ -35,9 +40,33 @@ class ConfRate extends React.Component {
 
    this.onUpdate.bind(this)
    this.onChange.bind(this)
-   this.handleMouseUp.bind(this) 
+   this.handleMouseUp.bind(this)
+   this._isMounted = false;
+     
   
   }; 
+
+
+  componentDidMount() {  
+  this._isMounted = true;
+  document.body.style.background= '#fff';   
+  window.history.pushState(window.state, null, window.location.href);
+  window.addEventListener('popstate', e => this._handleGoBack(e));
+  window.onbeforeunload = this._handleRefresh
+  }
+
+  _handleRefresh(evt){
+    return false // error message when refresh occurs
+  }
+
+  _handleGoBack(event){
+    window.history.go(1);
+  }
+
+  componentWillUnmount()
+  {
+   this._isMounted = false;
+  }  
 
   
   onUpdate = update => {
