@@ -9,8 +9,5 @@ app.use(express.static(path.join(__dirname, 'build')));
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
  });
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 // app.listen(9000);
 app.listen(port, () => console.log("Listening on Port", port));  
