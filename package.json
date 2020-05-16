@@ -9,12 +9,12 @@
     "@types/react-transition-group": "^4.2.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-compound-slider": "^2.5.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "typescript": "^3.9.2",
-    "react-transition-group": "^1.2.1"
-  
+    "react-transition-group": "^1.2.1",
+    "typescript": "^3.9.2"
   },
   "scripts": {
     "start": "react-scripts start",
