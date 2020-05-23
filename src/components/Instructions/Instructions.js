@@ -112,7 +112,7 @@ class Instructions extends React.Component {
 
     this.props.history.push({
        pathname: `/Block`,  
-       state: {participant_info: this.state, newblock_frame:this.state.newblock_frame} 
+       state: {participant_info: this.state, newblock_frame:this.state.newblock_frame, startQuiz: true} 
      })
     }
 
@@ -124,7 +124,7 @@ class Instructions extends React.Component {
             <p><span className="bold">Your goal is to win as many points as you can</span>.</p>
             <p> Your final payoff will depend on your choices. At the end of the experiment, we will calculate the cumulative number of points you won and translate them into real money.</p> 
             <p>You could earn between <span className="bold">0.5 &#163;</span> and <span className="bold">1.0 &#163;</span> as a bonus.</p> 
-            <p>The game will be divided in 4 short blocks and will last approximately <span className="bold">20 min.</span></p></div>;
+            <p>The game will be divided in <span className="bold">4</span> short blocks and will last approximately <span className="bold">20 min.</span></p></div>;
         }
 
         else if (this.state.currentInstructionText===2) {

@@ -3,12 +3,13 @@ var quizQuestions = [
 /*
   ADHD self - report scale for the LEARNOISE ONLINE PROJECT 
   by VS March 2020
+  Question 5 is a catch question to check the attention not in the original questionnaire 
 */
 
 
 {
 
-	question: "Please, rate yourself on each of the criteria. Tick the box that best describes how you have felt and conducted yourself over the past 6 months.", 
+	question: "Please, rate yourself on each of the criteria. Tick the box that best describes how you have felt and conducted yourself over the PAST 6 MONTHS.", 
 	answers: [
           {
               type: "Continue",
@@ -18,7 +19,7 @@ var quizQuestions = [
       qtype: "button", // to be maybe changed 
       questionId: 0,
       surveytag: 'asrs', 
-      title: 'Personal experience', // to be changed 
+      title: '', // to be changed 
       constraint: [
         {min: ""},
         {max: ""}
@@ -51,7 +52,7 @@ var quizQuestions = [
       ],
       questionId: 1,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -85,7 +86,7 @@ var quizQuestions = [
       ],
       questionId: 2,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -119,7 +120,7 @@ var quizQuestions = [
       ],
       questionId: 3,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -128,7 +129,7 @@ var quizQuestions = [
   },
 
   {
-      question: "How often do you have a task that requires a lot fo thought, how often do you avoid or delay getting started?",
+      question: "How often do you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
       answers: [
           {
               type: "asrs-1",
@@ -153,13 +154,50 @@ var quizQuestions = [
       ],
       questionId: 4,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
         {max: ""}
       ]
   },
+
+  // This is a catch question 
+  {
+
+    question: "For this question please select ‘always’ to demonstrate your attention", 
+    answers: [
+          {
+              type: "asrs-1",
+              content: "Always"
+          },
+          {
+              type: "asrs-2",
+              content: "Often"
+          },
+          {
+              type: "asrs-3",
+              content: "Sometimes"
+          },
+          {
+              type: "asrs-4",
+              content: "Rarely"
+          },
+          {
+              type: "asrs-5",
+              content: "Never"
+          },
+      ],
+      questionId: 5,
+      surveytag: 'asrs',
+      title: '',
+      qtype:"quiz",
+      constraint: [
+        {min: ""},
+        {max: ""}
+      ]
+  },
+
 
   {
       question: "How often do you fidget or squirm with yout hands or feet when you have to sit down for a long time?",
@@ -185,9 +223,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 5,
+      questionId: 6,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -219,9 +257,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 6,
+      questionId: 7,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -257,9 +295,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 7,
+      questionId: 8,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -291,9 +329,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 8,
+      questionId: 9,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -325,9 +363,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 9,
+      questionId: 10,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -359,9 +397,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 10,
+      questionId: 11,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -393,9 +431,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 11,
+      questionId: 12,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -427,9 +465,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 12,
+      questionId: 13,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -461,9 +499,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 13,
+      questionId: 14,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -495,9 +533,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 14,
+      questionId: 15,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -529,9 +567,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 15,
+      questionId: 16,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -563,9 +601,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 16,
+      questionId: 17,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -597,9 +635,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 17,
+      questionId: 18,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -630,9 +668,9 @@ var quizQuestions = [
               content: "Never"
           },
       ],
-      questionId: 18,
+      questionId: 19,
       surveytag: 'asrs',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},

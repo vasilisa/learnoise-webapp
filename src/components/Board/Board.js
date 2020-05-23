@@ -8,7 +8,7 @@ import { API_URL } from '../../config';
 import {withRouter} from 'react-router-dom';
 
 // import { CSSTransitionGroup } from 'react-transition-group';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
 class Board extends React.Component {
   constructor(props){
@@ -352,7 +352,7 @@ class Board extends React.Component {
 
     this.props.history.push({
       pathname: `/Block`,
-      state: {participant_info:this.state.participant_info, newblock_frame : false}
+      state: {participant_info:this.state.participant_info, newblock_frame : false, startQuiz: true}
     })    
   }
 

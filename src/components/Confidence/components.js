@@ -211,8 +211,10 @@ export class Handle extends Component {
             onPointerLeave: this.onMouseLeave, 
             // onMouseEnter: this.onMouseEnter,
             // onMouseLeave: this.onMouseLeave,
-            onMouseUp:    this.onMouseUp, // when you press the mouse\e 
+            // onMouseUp:    this.onMouseUp, // when you press the mouse\e 
             // onPointerUp: this.onMouseUp 
+            onPointerUp: this.onMouseUp,  
+            
           })}
         />
         <div

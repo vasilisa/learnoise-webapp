@@ -3,6 +3,7 @@ var quizQuestions = [
 /*
   PVD scale for the LEARNOISE ONLINE PROJECT 
   by VS March 2020
+  Question 6 is introduced to check users' attention, not in the original questionnaire.
 */
 
 {
@@ -203,9 +204,8 @@ var quizQuestions = [
       ]
   },
 
-
-  { 
-    question: "I have a history of susceptibility to infectious disease", 
+  {
+    question: "In this question please select the last option to demonstrate your attention", 
 
       answers: [{
          type: "pvd-1",
@@ -239,9 +239,11 @@ var quizQuestions = [
        {max: ""}
       ]
   },
+  
+
 
   { 
-    question: "I prefer to wash my hands pretty soon after shaking someone's hand", 
+    question: "I have a history of susceptibility to infectious disease", 
 
       answers: [{
          type: "pvd-1",
@@ -277,7 +279,7 @@ var quizQuestions = [
   },
 
   { 
-    question: "In general, I am very susceptible to colds, flu and other infectious diseases", 
+    question: "I prefer to wash my hands pretty soon after shaking someone's hand", 
 
       answers: [{
          type: "pvd-1",
@@ -313,7 +315,7 @@ var quizQuestions = [
   },
 
   { 
-    question: "I dislike wearing used clothes because you do not know what the last person who wore it was like", 
+    question: "In general, I am very susceptible to colds, flu and other infectious diseases", 
 
       answers: [{
          type: "pvd-1",
@@ -349,7 +351,7 @@ var quizQuestions = [
   },
 
   { 
-    question: "I am more likely than the people around me to catch an infectious disease", 
+    question: "I dislike wearing used clothes because you do not know what the last person who wore it was like", 
 
       answers: [{
          type: "pvd-1",
@@ -385,7 +387,7 @@ var quizQuestions = [
   },
 
   { 
-    question: "My hands do not feel dirty after touching money", 
+    question: "I am more likely than the people around me to catch an infectious disease", 
 
       answers: [{
          type: "pvd-1",
@@ -421,7 +423,7 @@ var quizQuestions = [
   },
 
   { 
-    question: "I am unlikley to catch a cold, flu, or other illness, even if it is 'going around'", 
+    question: "My hands do not feel dirty after touching money", 
 
       answers: [{
          type: "pvd-1",
@@ -448,6 +450,42 @@ var quizQuestions = [
       ],
       qtype: 'quiz',
       questionId: 12,
+      surveytag: 'pvd',
+      title: 'Vulnerability', 
+      constraint: [
+       {min: ""},
+       {max: ""}
+      ]
+  },
+
+  { 
+    question: "I am unlikley to catch a cold, flu, or other illness, even if it is 'going around'", 
+
+      answers: [{
+         type: "pvd-1",
+        content: "Agree strongly"},
+
+        {type: "pvd-2",
+        content: "Agree somewhat"},
+
+        {type: "pvd-3",
+        content: "Agree slightly"},
+
+        {type: "pvd-4",
+        content: "Neither agree nor disagree"},
+
+        {type: "pvd-5",
+        content: "Disagree slightly"},
+
+        {type: "pvd-6",
+        content: "Disagree somewhat"},
+
+        {type: "pvd-7",
+        content: "Disagree strongly"},
+        
+      ],
+      qtype: 'quiz',
+      questionId: 13,
       surveytag: 'pvd',
       title: 'Vulnerability', 
       constraint: [
@@ -484,7 +522,7 @@ var quizQuestions = [
         
       ],
       qtype: 'quiz',
-      questionId: 13,
+      questionId: 14,
       surveytag: 'pvd',
       title: 'Vulnerability', 
       constraint: [
@@ -520,7 +558,7 @@ var quizQuestions = [
         
       ],
       qtype: 'quiz',
-      questionId: 14,
+      questionId: 15,
       surveytag: 'pvd',
       title: 'Vulnerability', 
       constraint: [

@@ -9,9 +9,6 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // f
 
 
 import Score from '../Score/Score';
-import quizQuestions from './quiz_questions';
-
-
 
 import './Block.css'
 
@@ -20,8 +17,6 @@ class Block extends React.Component {
   constructor(props){
     super(props);
     const participant_info = this.props.location.state.participant_info
-
-    // console.log('Block startQuiz:',this.props.location.state.startQuiz)
 
     
     const block_info = {
@@ -44,17 +39,13 @@ class Block extends React.Component {
       score                 : -1,
       load_bonus            : false, 
       currentInstructionText: 1, // this is for the transition between the instructions screens without changing the block number
-      readyToProceed        : false, 
-      startQuiz             : this.props.location.state.startQuiz,  // do the quiz at the end of the second training block before the main task starts       
-      quizQuestions         : quizQuestions
-      }
+      readyToProceed        : false      
+    }
 
     this.fetchBlock.bind(this);
     this.fetchSymbols.bind(this);
     this.redirectToScore.bind(this); 
-    this.redirectToSurvey.bind(this);
-    this.redirectToQuiz.bind(this);
-     
+    this.redirectToSurvey.bind(this); 
     this._isMounted = false;
     this._handleGoBack.bind(this);
     this.handleInstructionsLocal = this.handleInstructionsLocal.bind(this) 
@@ -143,23 +134,6 @@ class Block extends React.Component {
 }
 }
 
-redirectToQuiz() {
-
-if  (this.state.startQuiz === true && this._isMounted===true){
-  // console.log('Starting the quiz') 
-  this.props.history.push({
-           pathname: `/QuizGame`,
-           state: {quizQuestions: this.state.quizQuestions,
-                  participant_info: this.state.participant_info
-                 }
-          })
-}
-
-else if  (this.state.startQuiz === false){
-    this.redirectToTarget()
- }
-}
-
 redirectToScore() {
 if (this.state.load_bonus === false) {
   this.fetchScore() 
@@ -169,7 +143,7 @@ else if  (this.state.load_bonus === true){
    return (
         <Score
           score      = {this.state.score}  
-          onClicked  = {this.redirectToSurvey} //callback
+          onClicked  = {this.redirectToSurvey}
         />
       );}
  }
@@ -344,7 +318,6 @@ render()
             <p>Do your best to rate your confidence accurately!</p> 
             <p>For example if you are somewhat uncertain that you chose the most rewarding option, slide your answer to the left.</p>
             <p>Alternatively if you are more certain that you chose the most rewarding option, slide your answer to the right.</p>
-            <p>Double-click the mouse or tap the circle on the slider to confirm your rating.</p> 
             <p>Don't overthink your ratings too much!</p>
             
             <p>Be sure to make use of the <span className='bold'>full length</span> of the scale throughout the game.</p>
@@ -357,8 +330,6 @@ render()
              text = <div className='textbox'> 
               <p>Let's do another training session with <span className="bold">complete feedback</span> now: you will see <span className="bold">both</span> the feedback of the <span className="bold">chosen</span> and <span className="bold">unchosen</span> slot machines.</p> 
               <p>You will also rate your confidence now.</p>
-              <br></br>
-              <p>After the training we will ask you to do a short <span className="bold">quiz</span>!</p>
               
                 <div className="translate"/>
                 <img className="introsymbol"  src={require('../../images/symbol_shape_1_grate_None_color_2.png')} alt='introsymbol'/> 
@@ -407,47 +378,11 @@ render()
       </CSSTransitionGroup>);
       }
 
-    // Starting the quiz after the training: 
-    else if ((this.state.participant_info.block_number===1) && (this.state.newblock_frame===false) && (this.state.startQuiz===true)) 
+    // Starting the real task   
+    else if ((this.state.participant_info.block_number===1) && (this.state.newblock_frame===false))
     {
-       text = <div className='textbox'><p> You finished the training!</p>
+      text = <div className='textbox'><p> You finished the training!</p>
                   <p></p>
-                  <p> It's time for a short quiz now!</p>
-                  <p>If you fail to answer correctly <span className="bold">all quiz questions</span> you will have to redo the quiz again before starting the game</p>
-                  <p>Please, do pay attention!</p> 
-                  </div>
-      return (
-      <CSSTransitionGroup
-      className="container"
-      component="div"
-      transitionName="fade"
-      transitionEnterTimeout={800}
-      transitionLeaveTimeout={500}
-      transitionAppear
-      transitionAppearTimeout={500}>
-        <div>
-        <center> 
-        <div>
-          <div className="restarttraining">
-            {text}  <div className="translate"/>
-          </div>
-          <center>
-            <Button className="buttonInstructionsBlock" onClick={()=>this.redirectToQuiz()}>
-            START QUIZ
-            </Button>
-          </center>
-        </div>
-        </center>
-        </div>
-        </CSSTransitionGroup>);
-
-
-    }
-    
-    // Starting the real task : should be conditional on the quiz responses to add here 
-    else if ((this.state.participant_info.block_number===1) && (this.state.newblock_frame===false) && (this.state.startQuiz===false))
-    {
-      text = <div className='textbox'>
                   <p> Let's start the task now! </p>
                   <p> At the beginning of each block you will see if you are playing <span className="bold">partial</span> or <span className="bold">complete</span> feedback block! </p>
                   <p> Finding the most rewarding slot machine will be harder than during the training, so pay attention!</p>

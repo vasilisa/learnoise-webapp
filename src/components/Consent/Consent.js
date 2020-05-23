@@ -42,7 +42,7 @@ const consents = [
 
     {
     type: 'checkBox9',
-    content: 'I confirm to use a DESKTOP or a TABLET but NOT A MOBILE PHONE thourought the entire sutdy.',
+    content: 'I confirm to use a DESKTOP or a TABLET but NOT A MOBILE PHONE throughout the entire sutdy.',
   },
 ];
 

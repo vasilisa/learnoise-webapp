@@ -15,20 +15,21 @@ Contains the INFORMATION for FROM THE ONLINE ETHICS
 // Specify a SURVEY LIST HERE FOR SIMPLICITY 
 // IMPORTANT: Has to match the import names in the Survey.js !!! 
 
-const survey_list = [
+constsurvey_list = [
 'demo', // demograhics
 'bis',  // impulsivity 
 'ius',  // uncertianty 
 'asrs', // adhd
-'pdi',  // delusions 
-'stai', // state anxiety 
+'spq',  // schizotipy  
+'stai', // trait anxiety 
 'ocir', // OCD
 'pswq', // worry  
-'pad',  // compulsivity 
+'aes',  // apathy 
+'lsa',  // social anxiety 
 'zung', // depression 
 'pvd',  // perceived vulnerability 
 'iq',    // IQ, 
-'feedback' // feedback on the experiment 
+'feedback', // feedback on the experiment ,
 ]
 
 
@@ -134,17 +135,19 @@ render() {
           <p><span className="bold">Who can take part in this study?</span></p>
           <p>Adults (aged 18 years or over).</p>
           <p><span className="bold">What will happen to me if I take part?</span></p> 
-          <p>You will an computer game, which will last around 20 minutes.</p> 
-          <p>You will receive between <span className="bold">£8.25</span> and <span className="bold">£9.25</span> for helping us.</p>
+          <p>You will play a computer game, which will last around 20 minutes.</p> 
+          <p>You will receive between <span className="bold">£8.25</span> and <span className="bold">£9.25</span> per hour for helping us.</p>
           
           <p>The amount could vary based on the decisions you make in the game.</p> 
-          <p>You will also be asked some questions about yourself, your feelings, background, attitudes and behaviour in your everyday life.</p>
+          <p>After the game you will also be asked some questions about yourself, your feelings, background, attitudes and behaviour in your everyday life.</p>
           <p>There will also be some questions about reasoning.</p>
+          <p>Note, that you have to complete both the game and the questionnaires after in order to validate your participation and receive the payment.</p>
+          <br></br>
           <p>For this experiment we are interested in multiple different processes in learning and decision-making.</p>
           <p>Remember, you are free to withdraw at any time without giving a reason.</p> 
           
           <p><span className="bold">What are the possible disadvantages and risks of taking part?</span></p>
-          <p>The task you complete does not pose any known risks.</p>
+          <p>The task you complete has no known risks.</p>
           <p>You will be asked to answer some questions about mood and feelings, and we will provide information about ways to seek help should you feel affected by the issues raised by these questions.</p>
 
           <p><span className="bold">What are the possible benefits of taking part?</span></p>
@@ -156,13 +159,13 @@ render() {
           <p>If you feel that the complaint has not been resolved satisfactorily, please contact the chair of the UCL Research Ethics Committee (ethics@ucl.ac.uk).</p>
           <p>If you are concerned about how your personal data are being processed please contact the data controller who is UCL: data-protection@ucl.ac.uk.</p>
           <p>If you remain unsatisfied, you may wish to contact the Information Commissioner’s Office (ICO).</p>
-          <p>Contact details, and details of data subject rights, are available on the ICO website <a style={{display: "table-cell"}} href="https://ico.org.uk/for-organisations/data-protection-reform/overview-of-the-gdpr/individuals-rights" target="_blank" rel="noopener">here</a></p> 
+          <p>Contact details, and details of data subject rights, are available on the ICO website <a style={{display: "table-cell"}} href="https://ico.org.uk/for-organisations/data-protection-reform/overview-of-the-gdpr/individuals-rights" target="_blank" rel="noopener noreferrer">here</a></p> 
           
           <p><span className="bold">What about my data?</span></p>
           <p>This ‘local’ privacy notice sets out the information that applies to this particular study.</p>
           <p>Further information on how UCL uses participant information can be found in our ‘general’ privacy notice:</p>
           <p>For participants in research studies, click 
-          <a style={{display: "table-cell"}} href="https://www.ucl.ac.uk/legal-services/privacy/ucl-general-research-participant-privacy-notice" target="_blank">here</a></p>  
+          <a style={{display: "table-cell"}} href="https://www.ucl.ac.uk/legal-services/privacy/ucl-general-research-participant-privacy-notice" target="_blank" rel="noopener noreferrer">here</a></p>  
           <p> The information that is required to be provided to participants under data protection legislation (GDPR and DPA 2018) is provided across both the ‘local’ and ‘general’ privacy notices.</p>
           <p>To help future research and make the best use of the research data you have given us (such as answers to questionnaires) we may keep your research data indefinitely and share these.</p>
           <ul>

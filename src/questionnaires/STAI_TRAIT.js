@@ -3,6 +3,7 @@ var quizQuestions = [
 /*
   STAI (TRAIT part) for the LEARNOISE ONLINE PROJECT 
   by VS March 2020
+  Question 8 is introduced to check attention, not in the original questionnaire 
 */
 
 {
@@ -15,10 +16,10 @@ var quizQuestions = [
               content: "Continue"
           }
           ],
-      qtype: "button", // to be maybe changed 
+      qtype: "button", 
       questionId: 0,
       surveytag: 'stai', 
-      title: 'Personal experience', // to be changed 
+      title: '', 
       constraint: [
         {min: ""},
         {max: ""}
@@ -47,7 +48,7 @@ var quizQuestions = [
       ],
       questionId: 1,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -77,7 +78,7 @@ var quizQuestions = [
       ],
       questionId: 2,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -107,7 +108,7 @@ var quizQuestions = [
       ],
       questionId: 3,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -137,7 +138,7 @@ var quizQuestions = [
       ],
       questionId: 4,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -167,7 +168,7 @@ var quizQuestions = [
       ],
       questionId: 5,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -197,7 +198,7 @@ var quizQuestions = [
       ],
       questionId: 6,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -227,7 +228,7 @@ var quizQuestions = [
       ],
       questionId: 7,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -257,7 +258,37 @@ var quizQuestions = [
       ],
       questionId: 8,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
+      qtype:"quiz",
+      constraint: [
+        {min: ""},
+        {max: ""}
+      ]
+  },
+
+  {
+      question: "Please answer 'often' to this question to show your attention", 
+      answers: [
+          {
+              type: "stai-1",
+              content: "Almost always"
+          },
+          {
+              type: "stai-2",
+              content: "Often"
+          },
+          {
+              type: "stai-3",
+              content: "Sometimes"
+          },
+          {
+              type: "stai-4",
+              content: "Almost never"
+          },
+      ],
+      questionId: 9,
+      surveytag: 'stai',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -285,9 +316,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 9,
+      questionId: 10,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -315,9 +346,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 10,
+      questionId: 11,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -345,9 +376,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 11,
+      questionId: 12,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -375,9 +406,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 12,
+      questionId: 13,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -404,9 +435,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 13,
+      questionId: 14,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -434,9 +465,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 14,
+      questionId: 15,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -464,9 +495,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 15,
+      questionId: 16,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -494,9 +525,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 16,
+      questionId: 17,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -524,9 +555,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 17,
+      questionId: 18,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -554,9 +585,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 18,
+      questionId: 19,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -583,9 +614,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 19,
+      questionId: 20,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -613,9 +644,9 @@ var quizQuestions = [
               content: "Almost never"
           },
       ],
-      questionId: 20,
+      questionId: 21,
       surveytag: 'stai',
-      title: 'Personal experience',
+      title: '',
       qtype:"quiz",
       constraint: [
         {min: ""},
@@ -625,3 +656,6 @@ var quizQuestions = [
 
 
 ]
+
+export default quizQuestions; 
+

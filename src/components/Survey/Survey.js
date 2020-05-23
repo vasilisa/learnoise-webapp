@@ -7,13 +7,14 @@ import * as demo from '../../questionnaires/DEMO';
 import * as ius from '../../questionnaires/IUS';
 import * as bis from '../../questionnaires/BIS11';
 import * as asrs from '../../questionnaires/ASRS11';
-import * as pdi from '../../questionnaires/PDI';
-import * as stai from '../../questionnaires/STAI_STATE';
+import * as stai from '../../questionnaires/STAI_TRAIT';
 import * as ocir from '../../questionnaires/OCIR';
 import * as pswq from '../../questionnaires/PSWQ';
-import * as pad from '../../questionnaires/PADWSUR';
 import * as zung from '../../questionnaires/ZUNG';
 import * as pvd from '../../questionnaires/PVD';
+import * as aes from '../../questionnaires/AES';
+import * as spq from '../../questionnaires/SPQ';
+import * as lsa from '../../questionnaires/LSA';
 import * as iq from '../../questionnaires/IQ';
 import * as feedback from '../../questionnaires/FEEDBACK';
 
@@ -23,17 +24,17 @@ var quizData = {
   ius: ius,
   bis: bis,
   asrs: asrs,
-  pdi: pdi, 
+  spq: spq,
+  lsa: lsa,
+  aes: aes, 
   stai: stai, 
   ocir: ocir,
   pswq: pswq,
-  pad: pad,
   zung:zung, 
   pvd: pvd,  
   iq:iq, 
   feedback: feedback 
 }
-
 
 function createQuiz(id,survey_name) {
      return {
@@ -229,9 +230,9 @@ render()
         text = <div className='SurveyIntroText'> <p><span className="bold">You completed all the questionnaires!</span></p>
             <br></br>
             <p>In this experiment, we were interested in how you learn from previous experience and how that is reflected in your confidence ratings.</p>
-            <p>Previous work has linked differences in behaviour and confidence ratings to psychiatric disorders, which we are aiming to understand better.</p>
+            <p>Previous work has linked differences in behaviour and confidence ratings to mental health traits, which we are aiming to understand better.</p>
             <p> Thanks for your help!</p>
-            <p>To get information regarding how to access mental health services please click <a href="https://www.nhs.uk/using-the-nhs/nhs-services/mental-health-services/how-to-access-mental-health-services" target="_blank">here</a></p> 
+            <p>To get information regarding how to access mental health services please click <a href="https://www.nhs.uk/using-the-nhs/nhs-services/mental-health-services/how-to-access-mental-health-services" target="_blank" rel="noopener noreferrer">here</a></p> 
             <br></br>
             <p>You will now be redirected to the validation page.</p>
             <p>Please, confirm leaving the page if prompted by the browser. Thank you!</p></div>

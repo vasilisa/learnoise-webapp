@@ -11,12 +11,11 @@ const sliderStyle = {
   width: '100%',
 }
 
-const domain  = [50, 100]
+const domain   = [50, 100]
+var myArray   = [55, 65, 70, 75, 85, 95]; 
 
-var myArray   = [50, 65, 70, 75, 82, 90]; 
+const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
 
-// const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
-// const defaultValues = [Math.round(Math.random()*50+50)] // to be changed 
 // console.log(defaultValues)
 
 
@@ -24,11 +23,6 @@ class ConfRate extends React.Component {
 
   constructor(props){
     super(props);
-
-
-    const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
-    // const defaultValues = [Math.round(Math.random()*50+50)] // to be changed 
-    console.log(defaultValues)
 
 
     this.state = {
@@ -40,33 +34,9 @@ class ConfRate extends React.Component {
 
    this.onUpdate.bind(this)
    this.onChange.bind(this)
-   this.handleMouseUp.bind(this)
-   this._isMounted = false;
-     
+   this.handleMouseUp.bind(this) 
   
   }; 
-
-
-  componentDidMount() {  
-  this._isMounted = true;
-  document.body.style.background= '#fff';   
-  window.history.pushState(window.state, null, window.location.href);
-  window.addEventListener('popstate', e => this._handleGoBack(e));
-  window.onbeforeunload = this._handleRefresh
-  }
-
-  _handleRefresh(evt){
-    return false // error message when refresh occurs
-  }
-
-  _handleGoBack(event){
-    window.history.go(1);
-  }
-
-  componentWillUnmount()
-  {
-   this._isMounted = false;
-  }  
 
   
   onUpdate = update => {
@@ -149,15 +119,6 @@ class ConfRate extends React.Component {
               </div>
             )}
           </Tracks>
-          <Ticks count={5 /* generate approximately 15 ticks within the domain */}>
-            {({ ticks }) => (
-          <div className="slider-ticks">
-            {ticks.map(tick => (
-              <Tick key={tick.id} tick={tick} count={ticks.length} />
-          ))}
-          </div>
-      )}
-    </Ticks>
         </Slider>
       </div>
       </div>
@@ -172,3 +133,13 @@ ConfRate.propTypes = {
     confClicked: PropTypes.func.isRequired
   }
 
+// You can add Ticks to the scale after the Track element in the render within the slider 
+ // <Ticks count={5 /* generate approximately 15 ticks within the domain */}>
+ //            {({ ticks }) => (
+ //          <div className="slider-ticks">
+ //            {ticks.map(tick => (
+ //              <Tick key={tick.id} tick={tick} count={ticks.length} />
+ //          ))}
+ //          </div>
+ //      )}
+ //    </Ticks>
