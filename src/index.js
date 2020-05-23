@@ -12,6 +12,7 @@ import Block from "./components/Block/Block";
 import Board from "./components/Board/Board";
 import Survey from "./components/Survey/Survey";
 import QuizBlock from "./components/QuizBlock/QuizBlock";
+import QuizGame from "./components/Block/QuizGame";
 
 import * as serviceWorker from './serviceWorker';
 
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path="/Instructions" component={Instructions} exact />
                 <Route path="/Block" component={Block} exact />
                 <Route path="/Board" component={Board} exact />
+                <Route path="/QuizGame" component={QuizGame} exact />
                 <Route path="/Survey" component={Survey} exact />
                 <Route path="/QuizBlock" component={QuizBlock} exact />
             </Switch>
