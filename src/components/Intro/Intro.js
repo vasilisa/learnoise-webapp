@@ -15,7 +15,7 @@ Contains the INFORMATION for FROM THE ONLINE ETHICS
 // Specify a SURVEY LIST HERE FOR SIMPLICITY 
 // IMPORTANT: Has to match the import names in the Survey.js !!! 
 
-constsurvey_list = [
+const survey_list = [
 'demo', // demograhics
 'bis',  // impulsivity 
 'ius',  // uncertianty 
