@@ -135,13 +135,14 @@ render() {
           <p><span className="bold">Who can take part in this study?</span></p>
           <p>Adults (aged 18 years or over).</p>
           <p><span className="bold">What will happen to me if I take part?</span></p> 
-          <p>You will play a computer game, which will last around 20 minutes.</p> 
-          <p>You will receive between <span className="bold">£8.25</span> and <span className="bold">£9.25</span> per hour for helping us.</p>
+          <p>You will play a computer game, which will last around 20-30 minutes.</p> 
+          <p>You will receive between <span className="bold">£8.25</span> and <span className="bold">£9.25 per hour</span> for helping us.</p>
           
           <p>The amount could vary based on the decisions you make in the game.</p> 
           <p>After the game you will also be asked some questions about yourself, your feelings, background, attitudes and behaviour in your everyday life.</p>
           <p>There will also be some questions about reasoning.</p>
           <p>Note, that you have to complete both the game and the questionnaires after in order to validate your participation and receive the payment.</p>
+          <p>In total the study will take about 50 minutes.</p>
           <br></br>
           <p>For this experiment we are interested in multiple different processes in learning and decision-making.</p>
           <p>Remember, you are free to withdraw at any time without giving a reason.</p> 
