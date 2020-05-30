@@ -12,11 +12,8 @@ const sliderStyle = {
 }
 
 const domain   = [50, 100]
-var myArray   = [55, 65, 70, 75, 85, 95]; 
+var myArray    = [55, 65, 70, 77, 85, 95]; 
 
-const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
-
-// console.log(defaultValues)
 
 
 class ConfRate extends React.Component {
@@ -24,11 +21,15 @@ class ConfRate extends React.Component {
   constructor(props){
     super(props);
 
+    const defaultValues = [myArray[Math.floor(Math.random() * myArray.length)]]; 
+    // console.log('Generate default value',defaultValues)
+
 
     this.state = {
     values: defaultValues.slice(),
     update: defaultValues.slice(),
-    start_conf: new Date()
+    start_conf: new Date(), 
+    conf_init: defaultValues.slice()
   }; 
 
 
@@ -55,9 +56,9 @@ class ConfRate extends React.Component {
       var rt_conf  = date.getTime() - this.state.start_conf
 
       // console.log('Conf value update is:', conf)
-      // console.log('Conf rt is:', rt_conf)
+      // console.log('Conf init is:',this.state.conf_init)
       
-      this.props.confClicked(conf,rt_conf)
+      this.props.confClicked(conf,rt_conf, this.state.conf_init)
   
     }
 

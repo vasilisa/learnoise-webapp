@@ -15,7 +15,7 @@ class QuizBlock extends React.Component {
     // Get the right questions JSON part
     var quizQuestionsBlock = this.props.location.state.questions.filter(d => d.surveytag === this.props.location.state.block_info.surveytag);
     
-    // console.log(quizQuestionsBlock)
+    console.log('Game_id QuizBlock',this.props.location.state.participant_info.game_id)
 
     var date_time_now = new Date().toLocaleString();
     
@@ -41,11 +41,16 @@ class QuizBlock extends React.Component {
       // This is to be recorded and POSTED to the DB
       answered_questionsId      : [],
       answered_questionsContent : [],
+      cashed           : {}, 
+      TotalQuestion :  quizQuestionsBlock.length, 
+      step: 1
     
     };
 
    this.handleAnswerSelected  = this.handleAnswerSelected.bind(this);
    this.redirectToSurvey      = this.redirectToSurvey.bind(this);
+   this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(this) 
+
     
   }
 
@@ -55,8 +60,6 @@ class QuizBlock extends React.Component {
     const image_a       = (this.state.quizQuestionsBlock[0].image_a=== undefined) ? null : require('../../images/' + this.state.quizQuestionsBlock[0].image_a)
      
     var shuffledAnswerOptions = this.state.quizQuestionsBlock.map(question =>this.NoShuffleArray(question.answers)); 
-    
-    
     document.body.style.background= '#fff';
     this.setState({
       questionId:    firstQuestion.questionId,
@@ -68,7 +71,28 @@ class QuizBlock extends React.Component {
       image_a:       image_a, 
       
     });
+
+    this.hydrateStateWithLocalStorage();
+    
   }
+
+
+  hydrateStateWithLocalStorage() {
+
+       // if the key exists in localStorage
+       if (sessionStorage.hasOwnProperty('cashed')) {
+         let cashed_ = sessionStorage.getItem('cashed');
+         try {
+           cashed_ = JSON.parse(cashed_);
+           this.setState({'cashed': cashed_ });
+         } catch (e) {
+           // handle empty string
+           this.setState({'cashed': cashed_ });
+         }
+       }
+       console.log('retreived cash', this.state.cashed)
+     }
+
 
   shuffleArray(array) {
     var currentIndex = array.length,
@@ -99,7 +123,31 @@ NoShuffleArray(array) {
     
     this.setUserAnswer(event.currentTarget.value,answerContent,questionId); 
 
-    if (this.state.questionCount < this.state.quizQuestionsBlock.length) {   
+    // Recompute total number of questions here: 
+    var TotalQuestion = this.state.TotalQuestion
+    var step          = this.state.step 
+
+    if (this.state.quizQuestionsBlock[this.state.counter].condition===true) {// Next question is defined based on the previous answer 
+
+      if (event.currentTarget.value==='gad-4'){ // this is a Not at all answer in GAD
+        step = 2
+        TotalQuestion = TotalQuestion - 1
+     }
+     else {
+      step = 1
+     }
+    }
+    else if (this.state.quizQuestionsBlock[this.state.counter].condition===undefined){
+      step = 1
+    }
+
+    this.setState({
+      TotalQuestion: TotalQuestion, 
+      step: step, 
+    })
+    
+
+    if (this.state.questionCount < TotalQuestion) { // this.state.TotalQuestion   
       setTimeout(() => this.setNextQuestion(), 300);
     } else {
       setTimeout(() => this.redirectToSurvey(), 300); 
@@ -124,7 +172,8 @@ NoShuffleArray(array) {
   }
 
   setNextQuestion() {
-    const counter       = this.state.counter + 1;
+
+    const counter       = this.state.counter + this.state.step;
     const questionCount = this.state.questionCount + 1;
     const nextQuestion  = this.state.quizQuestionsBlock[counter]
     const image_item    = (this.state.quizQuestionsBlock[counter].image=== undefined) ? null : require('../../images/' + this.state.quizQuestionsBlock[counter].image)
@@ -142,7 +191,6 @@ NoShuffleArray(array) {
       constraint: nextQuestion.constraint,
       image: image_item,
       image_a: image_a,
-       
     });
   }
 
@@ -184,7 +232,44 @@ NoShuffleArray(array) {
        body: JSON.stringify(body)
      })
 
-  // console.log('PINFO quizBlock', this.state.participant_info)
+    // for each key in cashed object append the values
+    var cashed_update = this.state.cashed
+    if (Object.keys(cashed_update).length === 0 && cashed_update.constructor === Object || cashed_update === '' || cashed_update ===undefined) {
+      
+    const keys = ['block_number','block_name', 
+                    'question_ids',
+                    'answers',
+                    'date_time_survey_start',
+                    'date_time_survey_end']
+
+      for (const key of keys) {
+        cashed_update[key] = [body[key]] // wrap into an array here 
+      }
+    }
+    else {
+    try {
+      const keys = Object.keys(cashed_update)
+      
+      for (const key of keys) {
+        
+        let val  = cashed_update[key]
+        let val2 = body[key]
+
+        val.push(val2)
+        cashed_update[key] = val
+      }
+
+    } catch (e) {
+      console.log('Failed to append')
+      cashed_update = this.state.cashed
+    }
+
+    } 
+
+    // Push new data to local storage 
+    console.log('Saving cash')
+    sessionStorage.setItem("cashed", JSON.stringify(cashed_update));
+
   this.props.history.push({
       pathname: `/Survey`,
       state: {participant_info:this.state.participant_info,newblock_frame: false, finished: true}
@@ -209,7 +294,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           image           ={this.state.image}
           image_a         ={this.state.image_a}
@@ -230,7 +315,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           constraint      ={this.state.constraint}
           survey_part     ={this.state.participant_info.block_number_survey+1}
@@ -250,7 +335,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           constraint      ={this.state.constraint}
           survey_part     ={this.state.participant_info.block_number_survey+1}
@@ -269,7 +354,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           constraint      ={this.state.constraint}
           survey_part     ={this.state.participant_info.block_number_survey+1}
@@ -286,7 +371,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           survey_part     ={this.state.participant_info.block_number_survey+1}
           surveyTotal     ={this.state.participant_info.TotalBlock+1}
@@ -304,7 +389,7 @@ NoShuffleArray(array) {
           questionId      ={this.state.questionId}
           questionCount   ={this.state.questionCount}
           question        ={this.state.question}
-          questionTotal   ={this.state.quizQuestionsBlock.length}
+          questionTotal   ={this.state.TotalQuestion}
           onAnswerSelected={this.handleAnswerSelected}
           survey_part     ={this.state.participant_info.block_number_survey+1}
           surveyTotal     ={this.state.participant_info.TotalBlock+1}

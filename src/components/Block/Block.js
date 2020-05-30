@@ -46,7 +46,8 @@ class Block extends React.Component {
       currentInstructionText: 1, // this is for the transition between the instructions screens without changing the block number
       readyToProceed        : false, 
       startQuiz             : this.props.location.state.startQuiz,  // do the quiz at the end of the second training block before the main task starts       
-      quizQuestions         : quizQuestions
+      quizQuestions         : quizQuestions, 
+      // cashed: {}
       }
 
     this.fetchBlock.bind(this);
@@ -58,6 +59,9 @@ class Block extends React.Component {
     this._isMounted = false;
     this._handleGoBack.bind(this);
     this.handleInstructionsLocal = this.handleInstructionsLocal.bind(this) 
+
+    // this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(this) 
+
 
   }
 
@@ -194,6 +198,49 @@ redirectToSurvey = () => {
        body: JSON.stringify(body)
      })
 
+    // Extract data from the localStorage and push them to the DB as well
+    let cashed_ = {}
+    if (sessionStorage.hasOwnProperty('cashed')) {
+        cashed_ = sessionStorage.getItem('cashed');
+
+        try {
+          cashed_ = JSON.parse(cashed_);
+          // console.log('parsed cash',cashed_)
+        } catch (e) {
+          console.log('Cannot parse cashed', cashed_)
+        }
+    }
+
+    // Push cashed data to the DB
+    var date_time_end = new Date().toLocaleString();
+
+    let body_cashed = {
+      'log'          : cashed_,  // this.state.cashed, 
+      'date_time'    : this.state.participant_info.date_time, 
+      'date_time_end': date_time_end, 
+      'log_type'     : 'game' 
+    }
+    // console.log('body_cashed', body_cashed)
+
+    try {
+
+
+    fetch(`${API_URL}/attempts/save/`+ this.state.participant_info.participant_id + `/` + this.state.participant_info.game_id + `/` + this.state.participant_info.prolific_id, {
+       method: 'POST',
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(body_cashed)
+    })
+    }
+    catch(e) {
+      console.log('cannot post cashed data: data would be lost')
+    }
+
+    // console.log('Clearing cashed')
+    sessionStorage.removeItem('cashed')
+      
     this.props.history.push({
       pathname: `/Survey`,
       state: {participant_info: this.state.participant_info, newblock_frame: true} // to verify what is actually imported to a new page and what you need 
@@ -262,7 +309,7 @@ redirectToSurvey = () => {
           th_reward_2    : Object.keys(data['th_reward_2']).map((key, index) => (data['th_reward_2'][key])),
           position       : Object.keys(data['position']).map((key, index) => (data['position'][key])),
           trial_numb     : 0,
-          TotalTrial     : Object.keys(data['reward_1']).length  // 1 for THIS IS FOR THE TEST ONLY 
+          TotalTrial     : 3 // Object.keys(data['reward_1']).length  // 1 for THIS IS FOR THE TEST ONLY 
         }
           
         this.setState({

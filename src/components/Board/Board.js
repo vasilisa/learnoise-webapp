@@ -50,18 +50,42 @@ class Board extends React.Component {
       showConf         : false, 
       confidence       : [], 
       reaction_times_conf: [], 
-      displayConf      :  displayConf  
+      displayConf      :  displayConf, 
+      cashed           : {}, 
+      confidence_init  : []   
     };
 
     this.redirectToBlock.bind(this)
     this.handleConf.bind(this)
     this.handleClick.bind(this)
     
-    var time_date_first          = new Date()
-    this.prev_reaction_time_date = time_date_first.getTime() // the beginning of the trial 
+    var time_date_first               = new Date()
+    this.prev_reaction_time_date      = time_date_first.getTime() // the beginning of the trial 
+    this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(this) 
   };  
 
+componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+ }
 
+  hydrateStateWithLocalStorage() {
+
+      // if the key exists in localStorage
+      if (sessionStorage.hasOwnProperty('cashed')) {
+        let cashed_ = sessionStorage.getItem('cashed');
+
+        try {
+          cashed_ = JSON.parse(cashed_);
+          this.setState({'cashed': cashed_ });
+        } catch (e) {
+          // handle empty string
+          this.setState({'cashed': cashed_ });
+        }
+
+      }
+   //    console.log('retreived cash', this.state.cashed)
+    }
+  
   renderBrick(i) {
     return (
       <Brick
@@ -93,25 +117,29 @@ class Board extends React.Component {
 
 // let split handleClick in 2 parts: 1 will take care defining the choice and feedback after the click 
 // second one about displaying the feedback and passing to the next trial once confidence rating is given 
-  handleConf(conf_value,rt_conf){ // receives the result from the child component on the call  
+  handleConf(conf_value,rt_conf,conf_init){ // receives the result from the child component on the call  
 
     // console.log('Confidence value is:',conf_value) 
     // console.log('Reaction times for confidence is:',rt_conf) 
     
     
-    let confidence     = this.state.confidence; 
-    let rt_confidence  = this.state.reaction_times_conf; 
+    let confidence      = this.state.confidence; 
+    let rt_confidence   = this.state.reaction_times_conf; 
+    let confidence_init = this.state.confidence_init;
 
     confidence.push(conf_value)
     rt_confidence.push(rt_conf)
-
+    confidence_init.push(conf_init)
 
     this.setState({
       showFeedback: true, 
       animation: false, // verify
       showConf: false,
       confidence: confidence, 
-      reaction_times_conf: rt_confidence  
+      reaction_times_conf: rt_confidence,
+      confidence_init: confidence_init, 
+      
+
     })
 
 
@@ -270,16 +298,19 @@ class Board extends React.Component {
 
     // console.log('Confidence value is not provided') 
     
-    let confidence     = this.state.confidence; 
-    let rt_confidence  = this.state.reaction_times_conf; 
-
+    let confidence      = this.state.confidence; 
+    let rt_confidence   = this.state.reaction_times_conf;
+    let confidence_init = this.state.confidence_init; 
+    
     confidence.push(-1000) // for consistency in the DB  
     rt_confidence.push(-1000)
+    confidence_init.push(-1000) 
 
 
       this.setState({        
         confidence : confidence, 
         reaction_times_conf : rt_confidence,
+        confidence_init: confidence_init,
         showFeedback: true, 
         animation: false
       }) 
@@ -316,11 +347,10 @@ class Board extends React.Component {
   }
 
 
-
-
   redirectToBlock ()
 
   // Compute the block relative performance: 
+
 
   {
     let block_id   = this.state.block_info.block_number
@@ -337,10 +367,10 @@ class Board extends React.Component {
                             'date_time'        : this.state.participant_info.date_time, 
                             'game_id'          : this.state.participant_info.game_id, 
                             'confidence'       : this.state.confidence, 
-                            'reaction_times_conf': this.state.reaction_times_conf
+                            'reaction_times_conf': this.state.reaction_times_conf, 
+                            'confidence_init'    : this.state.confidence_init
                           }  
 
-    
     fetch(`${API_URL}/participants_data/create/` + this.state.participant_info.participant_id + `/` + block_id + `/` + this.state.participant_info.prolific_id, {
        method: 'POST',
        headers: {
@@ -349,6 +379,50 @@ class Board extends React.Component {
        },
        body: JSON.stringify(body)
      })
+
+  
+    // for each key in cashed object append the values
+    var cashed_update = this.state.cashed
+    // console.log('This state cash', this.state.cashed)
+    if (Object.keys(cashed_update).length === 0 && cashed_update.constructor === Object || cashed_update === '' || cashed_update ===undefined) {
+      // console.log('cash is empty: first session', this.state.cashed)
+      
+      const keys = ['block_number','chosen_positions','chosen_symbols','chosen_rewards', 
+                    'unchosen_rewards',
+                    'reaction_times',
+                    'block_perf', 
+                    'confidence',
+                    'confidence_init',
+                    'reaction_times_conf'] 
+      
+      for (const key of keys) {
+        cashed_update[key] = [body[key]] // wrap into an array here 
+      }
+
+      // cashed_update = body
+    }
+    else {
+    try {
+      const keys = Object.keys(cashed_update)
+      
+      for (const key of keys) {
+        
+        let val  = cashed_update[key]
+        let val2 = body[key]
+
+        val.push(val2)
+        cashed_update[key] = val
+      }
+
+    } catch (e) {
+      // console.log('Failed to append')
+      cashed_update = this.state.cashed
+    }
+
+    } 
+
+    // Push new data to local storage 
+    sessionStorage.setItem("cashed", JSON.stringify(cashed_update));
 
     this.props.history.push({
       pathname: `/Block`,

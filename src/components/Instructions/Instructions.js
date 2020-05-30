@@ -22,7 +22,7 @@ class Instructions extends React.Component {
 
         const participant_info = this.props.location.state.participant_info
   
-        // console.log('Participant info from props', participant_info)
+        console.log('Participant info from props', participant_info)
 
         const check = participant_info.participant_id
 
@@ -35,7 +35,7 @@ class Instructions extends React.Component {
             block_number_survey: participant_info.block_number_survey, // not sure it should go here ! 
             survey_list: participant_info.survey_list, 
             game_id : '',       // to be fetched 
-            TotalBlock: 5,
+            TotalBlock: 5, // CHANGED FOR DEBUG ORIG 5 
             block_number: 0,  
             currentInstructionText: 1,
             newblock_frame : true, 
@@ -43,7 +43,7 @@ class Instructions extends React.Component {
             redirect: false,
         }
 
-    // console.log('Instructions', this.state)
+    console.log('Instructions', this.state)
 
     this.handleInstructionsLocal = this.handleInstructionsLocal.bind(this) // bind the method to avoid error on frames collapsed
     // this.fetchParticipantInfo.bind(this); 
@@ -124,7 +124,7 @@ class Instructions extends React.Component {
             <p><span className="bold">Your goal is to win as many points as you can</span>.</p>
             <p> Your final payoff will depend on your choices. At the end of the experiment, we will calculate the cumulative number of points you won and translate them into real money.</p> 
             <p>You could earn between <span className="bold">0.5 &#163;</span> and <span className="bold">1.0 &#163;</span> as a bonus.</p> 
-            <p>The game will be divided in <span className="bold">4</span> short blocks and will last approximately <span className="bold">20 min.</span></p></div>;
+            <p>The game will be divided in 4 short blocks and will last approximately <span className="bold">20 min.</span></p></div>;
         }
 
         else if (this.state.currentInstructionText===2) {

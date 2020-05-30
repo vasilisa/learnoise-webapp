@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
+import { API_URL } from '../../config';
+import { handleResponse } from '../helpers';
+
 
 // import other questionnaires the same way
 import * as demo from '../../questionnaires/DEMO';
@@ -9,9 +12,8 @@ import * as bis from '../../questionnaires/BIS11';
 import * as asrs from '../../questionnaires/ASRS11';
 import * as stai from '../../questionnaires/STAI_TRAIT';
 import * as ocir from '../../questionnaires/OCIR';
-import * as pswq from '../../questionnaires/PSWQ';
+import * as gad from '../../questionnaires/GAD'; 
 import * as zung from '../../questionnaires/ZUNG';
-import * as pvd from '../../questionnaires/PVD';
 import * as aes from '../../questionnaires/AES';
 import * as spq from '../../questionnaires/SPQ';
 import * as lsa from '../../questionnaires/LSA';
@@ -29,9 +31,8 @@ var quizData = {
   aes: aes, 
   stai: stai, 
   ocir: ocir,
-  pswq: pswq,
+  gad: gad, // add gad after 
   zung:zung, 
-  pvd: pvd,  
   iq:iq, 
   feedback: feedback 
 }
@@ -61,7 +62,7 @@ class Survey extends React.Component {
     const block_info = {
       surveytag  : this.props.location.state.participant_info.survey_list[0], // First questionnaire in the list 
      }
-
+    
     const n =  this.props.location.state.participant_info.survey_list.length-1;   
 
     const participant_info = {
@@ -70,10 +71,11 @@ class Survey extends React.Component {
       study_id              : this.props.location.state.participant_info.study_id, 
       participant_id        : this.props.location.state.participant_info.participant_id, 
       survey_list           : this.props.location.state.participant_info.survey_list, 
-      TotalBlock            : n, 
+      TotalBlock            : 0, // n, 
       block_number_survey   : this.props.location.state.participant_info.block_number_survey, 
       date_time             : this.props.location.state.participant_info.date_time, 
-      date                  : this.props.location.state.participant_info.date 
+      date                  : this.props.location.state.participant_info.date, 
+      game_id               : this.props.location.state.participant_info.game_id
   
     }
 
@@ -87,15 +89,14 @@ class Survey extends React.Component {
     }
 
    
-   
     this.getSurveyBlock.bind(this);
     this.redirectToQuiz.bind(this); 
     this.redirectToEnd.bind(this); 
     this._isMounted = false;
     this._handleGoBack.bind(this); 
-    this._handleTimeOut.bind(this);   
+    this._handleTimeOut.bind(this);  
+ 
   }
-
 
   redirectToQuiz () {
     if((this.props.location.state.participant_info.block_number_survey <= (this.state.participant_info.TotalBlock)))
@@ -151,7 +152,6 @@ class Survey extends React.Component {
   componentWillUnmount() {
     clearTimeout(this._handleTimeOut);
     this._isMounted = false;
- 
   }
 
 
@@ -163,13 +163,8 @@ class Survey extends React.Component {
     window.history.go(1);
   }
 
-  componentWillUnmount()
-  {
-   this._isMounted = false;
-  } 
-
   _handleTimeOut() {
-    console.log('Timeout:', this.state)
+    // console.log('Timeout:', this.state)
     setTimeout(() => {
      this.redirectToQuiz()
     }, 1500);
@@ -188,6 +183,40 @@ class Survey extends React.Component {
 }
 
  redirectToEnd(){
+
+    // Store the cashed data 
+
+    let cashed_ = {}
+    if (sessionStorage.hasOwnProperty('cashed')) {
+        cashed_ = sessionStorage.getItem('cashed');
+
+        try {
+          cashed_ = JSON.parse(cashed_);
+          // console.log('parsed cash',cashed_)
+        } catch (e) {
+          console.log('Cannot parse cashed')
+        }
+    }
+
+    // Push cashed data to the DB
+    var date_time_end = new Date().toLocaleString();
+
+    let body_cashed = {
+      'log'          : cashed_,  // this.state.cashed, 
+      'date_time'    : this.state.participant_info.date_time, 
+      'date_time_end': date_time_end, 
+      'log_type'     : 'survey' 
+    }
+    
+    fetch(`${API_URL}/attempts/save/`+ this.state.participant_info.participant_id + `/` + this.state.participant_info.game_id + `/` + this.state.participant_info.prolific_id, {
+       method: 'POST',
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(body_cashed)
+    })
+
       alert("You will now be redirected to the validation page. Please, confirm leaving the page. Thank you!")
       // window.location.replace('https://app.prolific.co/submissions/complete?cc=1A496EDB')
       window.location = 'https://app.prolific.co/submissions/complete?cc=570C2B94' // + this.props.location.state.participant_info.study_id // CHECK if validation code == stidu id
