@@ -208,7 +208,7 @@ NoShuffleArray(array) {
     }
 
     let body     = {        'participant_id'  : this.state.participant_info.participant_id, 
-                            'prolific_id'     : this.state.participant_info.prolific_id, 
+                            'prolific_id'     : this.state.participant_info.prolific_id,
                             'study_id'        : this.state.participant_info.study_id,
                             'block_number'    : this.state.participant_info.block_number_survey+1, 
                             'block_name'      : this.props.location.state.block_info.surveytag, 

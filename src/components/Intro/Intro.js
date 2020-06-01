@@ -142,7 +142,7 @@ render() {
           <p>After the game you will also be asked some questions about yourself, your feelings, background, attitudes and behaviour in your everyday life.</p>
           <p>There will also be some questions about reasoning.</p>
           <p>Note, that you have to complete both the game and the questionnaires after in order to validate your participation and receive the payment.</p>
-          <p>In total the study will take about <span className="bold">50 minutes</span>.</p>
+          <p>In total the study will take about <span className="bold">an hour</span>.</p>
           <br></br>
           <p>For this experiment we are interested in multiple different processes in learning and decision-making.</p>
           <p>Remember, you are free to withdraw at any time without giving a reason.</p> 

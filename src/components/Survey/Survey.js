@@ -71,7 +71,7 @@ class Survey extends React.Component {
       study_id              : this.props.location.state.participant_info.study_id, 
       participant_id        : this.props.location.state.participant_info.participant_id, 
       survey_list           : this.props.location.state.participant_info.survey_list, 
-      TotalBlock            : 0, // n, 
+      TotalBlock            : n, // PUT 0 or 1 for DEBUT otherwise n, 
       block_number_survey   : this.props.location.state.participant_info.block_number_survey, 
       date_time             : this.props.location.state.participant_info.date_time, 
       date                  : this.props.location.state.participant_info.date, 
