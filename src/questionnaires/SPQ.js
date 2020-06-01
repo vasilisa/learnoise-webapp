@@ -568,52 +568,6 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 24,
-      surveytag: 'spq',
-      title: '',
-      qtype:"quiz",
-      constraint: [
-        {min: ""},
-        {max: ""}
-      ]
-  },
-
-  {
-      question: "I rarely laugh and smile", 
-
-      answers: [
-          {
-              type: "spq-1",
-              content: "Yes"
-          },
-          {
-            type: "spq-2",
-            content: "No"
-          },
-      ],
-      questionId: 24,
-      surveytag: 'spq',
-      title: '',
-      qtype:"quiz",
-      constraint: [
-        {min: ""},
-        {max: ""}
-      ]
-  },
-
-  {
-      question: "I sometimes forget what I am trying to say", 
-
-      answers: [
-          {
-              type: "spq-1",
-              content: "Yes"
-          },
-          {
-            type: "spq-2",
-            content: "No"
-          },
-      ],
       questionId: 25,
       surveytag: 'spq',
       title: '',
@@ -648,7 +602,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you sometimes get concerned that friends or co-workers are not really loyal or trustworthy?", 
+      question: "I sometimes forget what I am trying to say", 
 
       answers: [
           {
@@ -671,7 +625,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Have you ever noticed a common event or object that seemed to be a special sign for you?", 
+      question: "I rarely laugh and smile", 
 
       answers: [
           {
@@ -694,7 +648,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I get anxious when meeting people for the first time", 
+      question: "Do you sometimes get concerned that friends or co-workers are not really loyal or trustworthy?", 
 
       answers: [
           {
@@ -717,7 +671,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you believe in clairvoyancy (psychic forces, fortune telling)?", 
+      question: "Have you ever noticed a common event or object that seemed to be a special sign for you?", 
 
       answers: [
           {
@@ -740,7 +694,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I often hear a voice speaking my thoughts aloud", 
+      question: "I get anxious when meeting people for the first time", 
 
       answers: [
           {
@@ -763,7 +717,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Some people think that I am a very bizarre person", 
+      question: "Do you believe in clairvoyancy (psychic forces, fortune telling)?", 
 
       answers: [
           {
@@ -786,7 +740,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I find it hard to be emotionally close to other people", 
+      question: "I often hear a voice speaking my thoughts aloud", 
 
       answers: [
           {
@@ -809,7 +763,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I often ramble on too much when speaking", 
+      question: "Some people think that I am a very bizarre person", 
 
       answers: [
           {
@@ -832,7 +786,7 @@ var quizQuestions = [
   },
 
   {
-      question: "My “nonverbal” communication (smiling and nodding during a conversation) is not very good", 
+      question: "I find it hard to be emotionally close to other people", 
 
       answers: [
           {
@@ -855,7 +809,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I feel I have to be on my guard even with friends", 
+      question: "I often ramble on too much when speaking", 
 
       answers: [
           {
@@ -878,7 +832,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you sometimes see special meanings in advertisements, shop windows, or in the way things are arranged around you?", 
+      question: "My “nonverbal” communication (smiling and nodding during a conversation) is not very good", 
 
       answers: [
           {
@@ -901,7 +855,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you often feel nervous when you are in a group of unfamiliar people?",
+      question: "I feel I have to be on my guard even with friends", 
 
       answers: [
           {
@@ -924,8 +878,8 @@ var quizQuestions = [
   },
 
   {
-      question: "Can other people feel your feelings when they are not there?",
-      
+      question: "Do you sometimes see special meanings in advertisements, shop windows, or in the way things are arranged around you?", 
+
       answers: [
           {
               type: "spq-1",
@@ -947,8 +901,8 @@ var quizQuestions = [
   },
 
   {
-      question: "Have you ever seen things invisible to other people?",
-      
+      question: "Do you often feel nervous when you are in a group of unfamiliar people?",
+
       answers: [
           {
               type: "spq-1",
@@ -970,7 +924,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you feel that there is no one you are really close to outside of your immediate family, or people you can confide in or talk to about personal problems?",
+      question: "Can other people feel your feelings when they are not there?",
       
       answers: [
           {
@@ -993,8 +947,8 @@ var quizQuestions = [
   },
 
   {
-      question: "Some people find me a bit vague and elusive during a conversation", 
-
+      question: "Have you ever seen things invisible to other people?",
+      
       answers: [
           {
               type: "spq-1",
@@ -1016,8 +970,8 @@ var quizQuestions = [
   },
 
   {
-      question: "I am poor at returning social courtesies and gestures", 
-
+      question: "Do you feel that there is no one you are really close to outside of your immediate family, or people you can confide in or talk to about personal problems?",
+      
       answers: [
           {
               type: "spq-1",
@@ -1039,7 +993,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you often pick up hidden threats or put-downs from what people say or do?", 
+      question: "Some people find me a bit vague and elusive during a conversation", 
 
       answers: [
           {
@@ -1062,7 +1016,7 @@ var quizQuestions = [
   },
 
   {
-      question: "When shopping do you get the feeling that other people are taking notice of you?", 
+      question: "I am poor at returning social courtesies and gestures", 
 
       answers: [
           {
@@ -1085,7 +1039,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I feel very uncomfortable in social situations involving unfamiliar people", 
+      question: "Do you often pick up hidden threats or put-downs from what people say or do?", 
 
       answers: [
           {
@@ -1108,7 +1062,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Have you had experiences with astrology, seeing the future, UFOs, ESP, or a sixth sense?", 
+      question: "When shopping do you get the feeling that other people are taking notice of you?", 
 
       answers: [
           {
@@ -1131,7 +1085,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do everyday things seem unusually large or small?", 
+      question: "I feel very uncomfortable in social situations involving unfamiliar people", 
 
       answers: [
           {
@@ -1154,7 +1108,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Writing letters to friends is more trouble than it is worth", 
+      question: "Have you had experiences with astrology, seeing the future, UFOs, ESP, or a sixth sense?", 
 
       answers: [
           {
@@ -1177,7 +1131,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I sometimes use words in unusual ways", 
+      question: "Do everyday things seem unusually large or small?", 
 
       answers: [
           {
@@ -1200,7 +1154,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I tend to avoid eye contact when conversing with others", 
+      question: "Writing letters to friends is more trouble than it is worth", 
 
       answers: [
           {
@@ -1223,7 +1177,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Have you found that it is best not to let other people know too much about you?", 
+      question: "I sometimes use words in unusual ways", 
 
       answers: [
           {
@@ -1246,7 +1200,7 @@ var quizQuestions = [
   },
 
   {
-      question: "When you see other people talking to each other, do you often wonder if they are talking about you?", 
+      question: "I tend to avoid eye contact when conversing with others", 
 
       answers: [
           {
@@ -1269,7 +1223,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I would feel very anxious if I had to give a speech in front of a large group of people", 
+      question: "Have you found that it is best not to let other people know too much about you?", 
 
       answers: [
           {
@@ -1292,7 +1246,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Have you ever felt that you are communicating with another person telepathically (by mind-reading)?", 
+      question: "When you see other people talking to each other, do you often wonder if they are talking about you?", 
 
       answers: [
           {
@@ -1315,7 +1269,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Does your sense of smell sometimes become unusually strong?", 
+      question: "I would feel very anxious if I had to give a speech in front of a large group of people", 
 
       answers: [
           {
@@ -1338,7 +1292,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I tend to keep in the background on social occasions", 
+      question: "Have you ever felt that you are communicating with another person telepathically (by mind-reading)?", 
 
       answers: [
           {
@@ -1361,7 +1315,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you tend to wander off the topic when having a conversation?", 
+      question: "Does your sense of smell sometimes become unusually strong?", 
 
       answers: [
           {
@@ -1384,7 +1338,7 @@ var quizQuestions = [
   },
 
   {
-      question: "I often feel that others have it in for me", 
+      question: "I tend to keep in the background on social occasions", 
 
       answers: [
           {
@@ -1407,7 +1361,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you sometimes feel that other people are watching you?", 
+      question: "Do you tend to wander off the topic when having a conversation?", 
 
       answers: [
           {
@@ -1430,7 +1384,7 @@ var quizQuestions = [
   },
 
   {
-      question: "Do you ever suddenly feel distracted by distant sounds that you are not normally aware of?", 
+      question: "I often feel that others have it in for me", 
 
       answers: [
           {
@@ -1443,6 +1397,52 @@ var quizQuestions = [
           },
       ],
       questionId: 61,
+      surveytag: 'spq',
+      title: '',
+      qtype:"quiz",
+      constraint: [
+        {min: ""},
+        {max: ""}
+      ]
+  },
+
+  {
+      question: "Do you sometimes feel that other people are watching you?", 
+
+      answers: [
+          {
+              type: "spq-1",
+              content: "Yes"
+          },
+          {
+            type: "spq-2",
+            content: "No"
+          },
+      ],
+      questionId: 62,
+      surveytag: 'spq',
+      title: '',
+      qtype:"quiz",
+      constraint: [
+        {min: ""},
+        {max: ""}
+      ]
+  },
+
+  {
+      question: "Do you ever suddenly feel distracted by distant sounds that you are not normally aware of?", 
+
+      answers: [
+          {
+              type: "spq-1",
+              content: "Yes"
+          },
+          {
+            type: "spq-2",
+            content: "No"
+          },
+      ],
+      questionId: 63,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1488,7 +1488,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 63,
+      questionId: 64,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1511,7 +1511,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 64,
+      questionId: 65,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1534,7 +1534,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 65,
+      questionId: 66,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1557,7 +1557,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 66,
+      questionId: 67,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1580,7 +1580,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 67,
+      questionId: 68,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1603,7 +1603,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 68,
+      questionId: 69,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1626,7 +1626,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 69,
+      questionId: 70,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1649,7 +1649,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 70,
+      questionId: 71,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1672,7 +1672,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 71,
+      questionId: 72,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1695,7 +1695,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 72,
+      questionId: 73,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1718,7 +1718,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 73,
+      questionId: 74,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1741,7 +1741,7 @@ var quizQuestions = [
             content: "No"
           },
       ],
-      questionId: 74,
+      questionId: 75,
       surveytag: 'spq',
       title: '',
       qtype:"quiz",
@@ -1750,7 +1750,6 @@ var quizQuestions = [
         {max: ""}
       ]
   },
-
 
   ]
 
