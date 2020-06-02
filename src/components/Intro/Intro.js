@@ -23,15 +23,13 @@ const survey_list = [
 'spq',  // schizotipy  
 'stai', // trait anxiety 
 'ocir', // OCD
-'pswq', // worry - replace by GAD7 ? or remove entirely  
+'gad', // worry to replace by GAD-7  
 'aes',  // apathy 
 'lsa',  // social anxiety 
 'zung', // depression 
-'pvd',  // perceived vulnerability - remove  
 'iq',    // IQ, 
 'feedback', // feedback on the experiment ,
 ]
-
 
  
 
