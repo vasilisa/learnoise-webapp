@@ -52,7 +52,11 @@ class Board extends React.Component {
       reaction_times_conf: [], 
       displayConf      :  displayConf, 
       cashed           : {}, 
-      confidence_init  : []   
+      confidence_init  : [], 
+      reward_1         : [],  // observed rewards for option 1 
+      reward_2         : [],  // observed rewards for option 2 
+
+
     };
 
     this.redirectToBlock.bind(this)
@@ -269,6 +273,10 @@ componentDidMount() {
       // console.log('Observed chosen feedback',feedback[i])
       // console.log('Observed unchosen feedback',feedback[1-i])
       
+      // Alternatively we could just use the reward sequences stored in the block_info but this is a check if there any trial that has been repeated etc: 
+      const rwd_1 = this.state.block_info.reward_1[this.state.block_info.trial_numb]
+      const rwd_2 = this.state.block_info.reward_2[this.state.block_info.trial_numb]
+      
       let block_perf = this.state.block_perf + ((chosen_r_th-unchosen_r_th)/this.state.block_info.position.length) 
 
       let reaction_times           = this.state.reaction_times;
@@ -283,6 +291,12 @@ componentDidMount() {
       let unchosen_rewards = this.state.unchosen_rewards; 
       unchosen_rewards.push(feedback[1-i])
 
+      let reward_1 = this.state.reward_1
+      reward_1.push(rwd_1)
+
+      let reward_2 = this.state.reward_2
+      reward_2.push(rwd_2)
+      
       this.setState({        
         chosen_positions : chosen_positions,
         chosen_symbols   : chosen_symbols,
@@ -368,7 +382,9 @@ componentDidMount() {
                             'game_id'          : this.state.participant_info.game_id, 
                             'confidence'       : this.state.confidence, 
                             'reaction_times_conf': this.state.reaction_times_conf, 
-                            'confidence_init'    : this.state.confidence_init
+                            'confidence_init'    : this.state.confidence_init,
+                            'reward_1'           : this.state.reward_1, // this.state.block_info.reward_1, 
+                            'reward_2'           : this.state.reward_2, // this.state.block_info.reward_2,
                           }  
 
     fetch(`${API_URL}/participants_data/create/` + this.state.participant_info.participant_id + `/` + block_id + `/` + this.state.participant_info.prolific_id, {
@@ -393,7 +409,9 @@ componentDidMount() {
                     'block_perf', 
                     'confidence',
                     'confidence_init',
-                    'reaction_times_conf'] 
+                    'reaction_times_conf',
+                    'reward_1',
+                    'reward_2'] 
       
       for (const key of keys) {
         cashed_update[key] = [body[key]] // wrap into an array here 

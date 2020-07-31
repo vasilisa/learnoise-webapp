@@ -1,9 +1,15 @@
+.conf-slider {
+  margin-top:2vh;
+  width: 75%;
+  margin-bottom:-10vh;
+  font-size:1.5vh;
+
+}
 .sliderText{
-	margin-top:20px;
-	font-size: 24pt;
+	font-size:10px;
 }
 .slider-val{
-	font-size: 18pt;
-	margin-left: 220px;
-	margin-right: 220px;
+	font-size:30px;
+
+	
 }

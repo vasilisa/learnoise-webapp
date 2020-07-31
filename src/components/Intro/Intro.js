@@ -79,7 +79,7 @@ class Intro extends React.Component {
   }
 
   // Mount the component to call the BACKEND and GET the information
-    componentWillMount() {
+    componentDidMount() {
     document.body.style.background = "fff";  
     this.fetchParticipantInfo();
     } 

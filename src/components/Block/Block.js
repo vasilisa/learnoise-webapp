@@ -7,12 +7,8 @@ import { handleResponse } from '../helpers';
 // import { CSSTransitionGroup } from 'react-transition-group';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
-
 import Score from '../Score/Score';
 import quizQuestions from './quiz_questions';
-
-
-
 import './Block.css'
 
 
