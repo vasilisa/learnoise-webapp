@@ -399,7 +399,7 @@ componentDidMount() {
   
     // for each key in cashed object append the values
     var cashed_update = this.state.cashed
-    // console.log('This state cash', this.state.cashed)
+    console.log('This state cash', this.state.cashed)
     if (Object.keys(cashed_update).length === 0 && cashed_update.constructor === Object || cashed_update === '' || cashed_update ===undefined) {
       // console.log('cash is empty: first session', this.state.cashed)
       
@@ -433,7 +433,7 @@ componentDidMount() {
       }
 
     } catch (e) {
-      // console.log('Failed to append')
+      console.log('Failed to append')
       cashed_update = this.state.cashed
     }
 
