@@ -15,6 +15,7 @@ const domain   = [50, 100]
 var myArray    = [55, 65, 70, 77, 85, 95]; 
 
 
+
 class ConfRate extends React.Component {
 
   constructor(props){
@@ -70,14 +71,14 @@ class ConfRate extends React.Component {
    
     return (
 
-      <div className='conf-slider'> 
+      <div> 
       
-      <div className='sliderText' style={{font-size:'100%''}}>How confident are you?</div>
+      <div className='sliderText'>How confident are you?</div>
       <span className='slider-val'>Very uncertain</span>
       <span className='slider-val'>Very certain</span>
       
       
-      <div style={{ height: 120, width: '50%', marginTop:10}}>
+      <div style={{ height: 120, width: '50%', marginTop:30}}>
         <Slider
           mode     ={1}
           step     ={1}
