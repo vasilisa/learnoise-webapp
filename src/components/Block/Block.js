@@ -201,7 +201,7 @@ redirectToSurvey = () => {
 
         try {
           cashed_ = JSON.parse(cashed_);
-          // console.log('parsed cash',cashed_)
+          console.log('parsed cash',cashed_)
         } catch (e) {
           console.log('Cannot parse cashed', cashed_)
         }
@@ -216,7 +216,7 @@ redirectToSurvey = () => {
       'date_time_end': date_time_end, 
       'log_type'     : 'game' 
     }
-    // console.log('body_cashed', body_cashed)
+    console.log('body_cashed', body_cashed)
 
     try {
 

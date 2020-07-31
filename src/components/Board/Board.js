@@ -87,7 +87,7 @@ componentDidMount() {
         }
 
       }
-   //    console.log('retreived cash', this.state.cashed)
+   console.log('retreived cash', this.state.cashed)
     }
   
   renderBrick(i) {
