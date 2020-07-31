@@ -7,8 +7,12 @@ import { handleResponse } from '../helpers';
 // import { CSSTransitionGroup } from 'react-transition-group';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'; // for newer version 
 
+
 import Score from '../Score/Score';
 import quizQuestions from './quiz_questions';
+
+
+
 import './Block.css'
 
 
@@ -201,7 +205,7 @@ redirectToSurvey = () => {
 
         try {
           cashed_ = JSON.parse(cashed_);
-          console.log('parsed cash',cashed_)
+          // console.log('parsed cash',cashed_)
         } catch (e) {
           console.log('Cannot parse cashed', cashed_)
         }
@@ -216,7 +220,7 @@ redirectToSurvey = () => {
       'date_time_end': date_time_end, 
       'log_type'     : 'game' 
     }
-    console.log('body_cashed', body_cashed)
+    // console.log('body_cashed', body_cashed)
 
     try {
 
@@ -305,7 +309,7 @@ redirectToSurvey = () => {
           th_reward_2    : Object.keys(data['th_reward_2']).map((key, index) => (data['th_reward_2'][key])),
           position       : Object.keys(data['position']).map((key, index) => (data['position'][key])),
           trial_numb     : 0,
-          TotalTrial     : Object.keys(data['reward_1']).length  // 1 for THIS IS FOR THE TEST ONLY 
+          TotalTrial     : 3 // Object.keys(data['reward_1']).length  // 1 for THIS IS FOR THE TEST ONLY 
         }
           
         this.setState({
