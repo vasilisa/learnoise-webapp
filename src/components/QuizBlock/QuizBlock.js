@@ -218,7 +218,9 @@ NoShuffleArray(array) {
                             'date_time_survey_start'  : this.state.date_time_start,
                             'date_time_survey_end'    : date_time_now,
                             'date_time'       : this.props.location.state.participant_info.date_time, 
-                            'date'            : this.props.location.state.participant_info.date
+                            'date'            : this.props.location.state.participant_info.date,
+                            'game_id'         : this.props.location.state.participant_info.game_id // need for indetification in case prolific id is undefined
+
                              
                           }
 

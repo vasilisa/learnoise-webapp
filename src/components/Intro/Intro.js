@@ -31,46 +31,35 @@ const survey_list = [
 'feedback', // feedback on the experiment ,
 ]
 
- 
 
 class Intro extends React.Component {
   constructor(props) {
     super(props);
 
-    let url    = this.props.location.search;
-    console.log(url) 
-    let params = queryString.parse(url);
+//    console.log(props)
 
-    // console.log(params) 
-    const prolific_id = (params['PROLIFIC_PID']=== undefined ? 'undefined' : params['PROLIFIC_PID']) 
-    const study_id    = 'learnoise'
+  const study_id    = 'learnoise'
 
-    var date_time     = new Date().toLocaleString();
-
-    var currentDate   = new Date(); // maybe change to local 
-    var date          = currentDate.getDate();
-    var month         = currentDate.getMonth(); //Be careful! January is 0 not 1
-    var year          = currentDate.getFullYear();
-    var dateString    = date + "-" +(month + 1) + "-" + year;
-    
-   // This will change for the questionnaires going AFTER the main task 
+     // This will change for the questionnaires going AFTER the main task 
    this.state = {
-      participant_id     : 1, // by default 
-      prolific_id        : prolific_id,
+      prolific_id    : undefined, 
+      participant_id : 1,
+      date           : '',
+      date_time      : '',
       study_id           : study_id,
-      date               : dateString,
       debug_survey       : true,
       block_number_survey: 0,
       survey_list        : survey_list, 
-      date_time          : date_time   
+      game_id            : 1000, // this is only used if we go to survey directly in debug mode, 
+      props              : props        
   }
+
 
     this.redirectToTarget.bind(this);
     this.fetchParticipantInfo.bind(this); 
 
     // for DEBUG ONLY REMOVE AFTER: 
     // this.directToSurvey.bind(this); 
-
   }
 
 
@@ -81,7 +70,7 @@ class Intro extends React.Component {
   // Mount the component to call the BACKEND and GET the information
     componentDidMount() {
     document.body.style.background = "fff";  
-    this.fetchParticipantInfo();
+    this.fetchParticipantInfo(this.state.props);
     } 
     
     
@@ -92,7 +81,27 @@ class Intro extends React.Component {
     })
   }
 
-  fetchParticipantInfo () {
+  fetchParticipantInfo (props) {
+
+    if (props.location.state===undefined) {
+        console.log('Fetching participant info') 
+
+        let url    = this.props.location.search;
+        // console.log(url) 
+        let params = queryString.parse(url);
+        // console.log(params) 
+        const prolific_id_ = (params['PROLIFIC_PID']=== undefined ? 'undefined' : params['PROLIFIC_PID'])
+        
+        // console.log(prolific_id_) 
+
+        var date_time_    = new Date().toLocaleString();
+        var currentDate   = new Date(); // maybe change to local 
+        var date          = currentDate.getDate();
+        var month         = currentDate.getMonth(); //Be careful! January is 0 not 1
+        var year          = currentDate.getFullYear();
+        var dateString    = date + "-" +(month + 1) + "-" + year;
+
+    
          fetch(`${API_URL}/participants_data/last_participant_id`) 
            .then(handleResponse)
            .then((data) => {
@@ -101,22 +110,42 @@ class Intro extends React.Component {
              // console.log(participant_id_)
 
              this.setState({
-                     participant_id : participant_id_,
-                 });
+                      participant_id : participant_id_,
+               });
          })
            .catch((error) => {
             console.log(error)
          });
-        }
+      this.setState({
+            prolific_id    : prolific_id_, 
+            date_time      : date_time_,
+            date           : dateString,
+            props          : [] 
+      });
+
+  }
+      
+  else {
+      console.log('Participant info found')
+        this.setState({
+          participant_id : props.location.state.participant_info.participant_id,
+          prolific_id    : props.location.state.participant_info.prolific_id, 
+          date_time      : props.location.state.participant_info.date_time,
+          date           : props.location.state.participant_info.date, 
+          props          : [] 
+      });
+
+      }
+
+}
 
 /* This is for SURVEY DEBUG ONLY TO SKIP THE TASK */ 
-// directToSurvey () {
-    
-//     this.props.history.push({
-//       pathname: `/Survey`,
-//       state: {participant_info: this.state, newblock_frame:true} // the 'newblock_frame' variable is redundant but this simplifies the code
-//     })
-//   }
+directToSurvey () {
+    this.props.history.push({
+      pathname: `/Survey`,
+      state: {participant_info: this.state, newblock_frame:true} // the 'newblock_frame' variable is redundant but this simplifies the code
+    })
+  }
 
 
 render() {
@@ -133,14 +162,13 @@ render() {
           <p><span className="bold">Who can take part in this study?</span></p>
           <p>Adults (aged 18 years or over).</p>
           <p><span className="bold">What will happen to me if I take part?</span></p> 
-          <p>You will play a computer game, which will last around 20-30 minutes.</p> 
+          <p>You will play a computer game, which will last around 20 minutes.</p> 
           <p>You will receive between <span className="bold">£8.25</span> and <span className="bold">£9.25 per hour</span> for helping us.</p>
           
           <p>The amount could vary based on the decisions you make in the game.</p> 
           <p>After the game you will also be asked some questions about yourself, your feelings, background, attitudes and behaviour in your everyday life.</p>
           <p>There will also be some questions about reasoning.</p>
-          <p>Note, that you have to complete both the game and the questionnaires after in order to validate your participation and receive the payment.</p>
-          <p>In total the study will take about <span className="bold">an hour</span>.</p>
+          <p><span className="bold">Note, that you have to complete both the game and the questionnaires after in order to validate your participation and receive the payment.</span></p>
           <br></br>
           <p>For this experiment we are interested in multiple different processes in learning and decision-making.</p>
           <p>Remember, you are free to withdraw at any time without giving a reason.</p> 

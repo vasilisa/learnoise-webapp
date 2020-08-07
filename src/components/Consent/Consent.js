@@ -104,6 +104,7 @@ handleCheckboxChange(changeEvent,e) {
 redirectToInfo() {
    this.props.history.push({
      pathname: `/`, 
+     state: {participant_info: this.state.participant_info} // the 'newblock_frame' variable is redundant but this simplifies the code
    })
  }
 
