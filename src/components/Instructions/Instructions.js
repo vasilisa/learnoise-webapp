@@ -22,7 +22,7 @@ class Instructions extends React.Component {
 
         const participant_info = this.props.location.state.participant_info
   
-        console.log('Participant info from props', participant_info)
+        // console.log('Participant info from props', participant_info)
 
         const check = participant_info.participant_id
 
@@ -43,7 +43,7 @@ class Instructions extends React.Component {
             redirect: false,
         }
 
-    console.log('Instructions', this.state)
+    // console.log('Instructions', this.state)
 
     this.handleInstructionsLocal = this.handleInstructionsLocal.bind(this) // bind the method to avoid error on frames collapsed
     // this.fetchParticipantInfo.bind(this); 

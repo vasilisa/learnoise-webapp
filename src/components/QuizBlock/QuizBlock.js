@@ -15,7 +15,7 @@ class QuizBlock extends React.Component {
     // Get the right questions JSON part
     var quizQuestionsBlock = this.props.location.state.questions.filter(d => d.surveytag === this.props.location.state.block_info.surveytag);
     
-    console.log('Game_id QuizBlock',this.props.location.state.participant_info.game_id)
+    // console.log('Game_id QuizBlock',this.props.location.state.participant_info.game_id)
 
     var date_time_now = new Date().toLocaleString();
     
@@ -90,7 +90,7 @@ class QuizBlock extends React.Component {
            this.setState({'cashed': cashed_ });
          }
        }
-       console.log('retreived cash', this.state.cashed)
+       // console.log('retreived cash', this.state.cashed)
      }
 
 
@@ -262,14 +262,14 @@ NoShuffleArray(array) {
       }
 
     } catch (e) {
-      console.log('Failed to append')
+      // console.log('Failed to append')
       cashed_update = this.state.cashed
     }
 
     } 
 
     // Push new data to local storage 
-    console.log('Saving cash')
+    // console.log('Saving cash')
     sessionStorage.setItem("cashed", JSON.stringify(cashed_update));
 
   this.props.history.push({
